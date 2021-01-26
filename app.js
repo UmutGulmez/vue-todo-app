@@ -1,6 +1,6 @@
-function arrayRemove (arr, value) {
-    return arr.filter(function(ele){
-        return ele != value;
+function arrayRemove (array, value) {
+    return array.filter(function(element){
+        return element != value;
     });
 }
 
