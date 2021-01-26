@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>To-do app from umutdev.xyz</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="app">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-two-thirds">
+            <div class="add-todo box">
+              <div class="title is-3 has-text-centered">
+                Add TO-DO
+              </div>
+              <div class="level">
+                <div class="level-item">
+                  <input placeholder="Add todo.." type="text" @keypress.enter="addTodo" v-model="inputValue" ref="todoInput" class="add-todo input">
+                </div>
+                <div class="level-right">
+                  <center>
+                    <button class="button addTodo" v-on:click="addTodo">
+                      <img src="https://img.icons8.com/plumpy/24/000000/forward.png"/>
+                    </button>
+                  </center>
+                </div>
+              </div>
+
+              <article class="message is-danger" v-for="error in errors">
+                <div class="message-body">
+                    {{ error }}
+                </div>
+              </article>
+            </div>
+
+            <div class="box currenTodo" v-for="todo in todos">
+              <div class="level">
+                <div class="level-item">
+                  <div class="todo-text">
+                    {{ todo }}
+                  </div>
+                </div>
+                <div class="level-right">
+                  <button name="archiveButton" v-on:click="archiveTodo(todo)" class="button archive">
+                    <img src="https://img.icons8.com/plumpy/24/000000/archive-folder.png"/>
+                  </button>
+                  <button name="doneButton" v-on:click="doneTodo(todo)" class="button done">
+                    <img src="https://img.icons8.com/plumpy/24/000000/checkmark.png"/>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="box doneTodos">
+              <div class="title is-4 has-text-centered">
+                Todos, Done
+              </div>
+              <div class="box doneTodo" v-for="doneTodo in doneTodos">
+                <div class="level">
+                  <div class="level-item">
+                    <div class="doneTodo-text">
+                      {{ doneTodo }}
+                    </div>
+                  </div>
+                  <div class="level-right">
+                    <button name="deleteButton" v-on:click="deleteDoneTodo(doneTodo)" class="button trash">
+                      <img src="https://img.icons8.com/plumpy/24/000000/delete-sign.png"/>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="box archivedTodos">
+              <div class="title is-4 has-text-centered">
+                Todos, Archived
+              </div>
+              <div class="box archivedTodo" v-for="archivedTodo in archivedTodos">
+                <div class="level">
+                  <div class="level-item">
+                    <div class="archivedTodo-text">
+                      {{ archivedTodo }}
+                    </div>
+                  </div>
+                  <div class="level-right">
+                    <button name="deleteButton" v-on:click="deleteArchivedTodo(archivedTodo)" class="button trash">
+                      <img src="https://img.icons8.com/plumpy/24/000000/delete-sign.png"/>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="box madeBy is-hidden-touch">
+        <div class="title is-4 has-text-centered">
+          Made by <a href="https://umutdev.xyz" target="_blank">umutdev.xyz</a>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="app.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+    <script src="https://unpkg.com/buefy/dist/components/table"></script>
+    <script src="https://unpkg.com/buefy/dist/components/input"></script>
+
+
+</body>
+</html>
